@@ -28,7 +28,6 @@ void ClearLine(int length)
 
 int FeetToInches(int feet)
 {
-    
     return 12 * feet;
 }
 
@@ -56,13 +55,40 @@ int ConvertInput(std::string input)
     return std::stoi(input);
 }
 
+std::string InterpretBMI(float bmi)
+{
+    if (bmi < 18.5)
+    {
+        return "underweight";
+    }
+    else if (bmi < 25)
+    {
+        return "normal weight";
+    }
+    else if (bmi < 30)
+    {
+        return "overweight";
+    }
+    else
+    {
+        return "obese";
+    }
+}
+
+float CalculateBMI(float height, float weight)
+{
+    return (weight)/(height * height);
+}
+
 void BMICalculator()
 {
     std::string input;//typed input, before checks.
     int inches = 0;
+    int feet = 0;
     int pounds = 0;
     float height = 0;//meters
     float weight = 0; //kilograms
+    float bmi = 0;
     line = 0;
     system("cls");
     std::cout << "Please answer the following questions with whole numbers only:";
@@ -92,7 +118,8 @@ void BMICalculator()
             SetPosition(0, line);
         }
     }
-    inches = FeetToInches(ConvertInput(input));
+    feet = ConvertInput(input);
+    //inches = FeetToInches(feet);
 
     std::cout << "How many inches taller are you than that?";
     line = line + 1;
@@ -118,8 +145,8 @@ void BMICalculator()
             SetPosition(0, line);
         }
     }
-    inches = inches + ConvertInput(input);
-    height = InchesToMeters(inches);
+    inches = ConvertInput(input);
+    height = InchesToMeters(inches+FeetToInches(feet));
 
     std::cout << "How much do you weigh in pounds?";
     line = line + 1;
@@ -145,9 +172,26 @@ void BMICalculator()
             SetPosition(0, line);
         }
     }
+    
+    pounds = ConvertInput(input);
     weight = PoundsToKilograms(pounds);
-    //std::cout << 
+    bmi = CalculateBMI(height, weight);
+    std::cout << "Height: " << feet << "'" << " " << inches << (char)34 << "\nWeight: " << pounds << "lbs";
+    line = line + 2;
+    SetPosition(0, line);
+    printf("Your BMI is: %.1f", bmi);
+    line = line + 1;
+    SetPosition(0, line);
+    std::cout << "you are " << InterpretBMI(bmi);
+    line = line + 1;
+    SetPosition(0, line);
+    std::cout << "Enter any letter to return to the menu";
+    line = line + 1;
+    SetPosition(0,line);
+    std::cin >> input;
+
 }
+
 
 void MenuSystem()
 {
