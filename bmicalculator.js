@@ -15,7 +15,7 @@ function poundsval(val)
 
 
 
-InterpretBMI(bmi)
+function interpretbmi(bmi)
 {
     if (bmi < 18.5)
     {
@@ -36,42 +36,50 @@ InterpretBMI(bmi)
 }
 
 
-BMICalculator(feet, inches, pounds)
+function bmicalculator(feet, inches, pounds)
 {
-    input;
-    height = 0;//meters
-    weight = 0; //kilograms
-    bmi = 0;
-    //inches = FeetToInches(feet);
-    height = 0.025 * static_cast<float>(inches+(12*feet));
-    weight = 0.45 * static_cast<float>(pounds);
+    
+    height = 0.0;//meters
+    weight = 0.0; //kilograms
+    bmi = 0.0;
+    //inches = FeetToInches(feet)
+    height = 0.025*(parseFloat(inches)+(12.0*parseFloat(feet)));
+    weight = 0.45 * (parseFloat(pounds));
     bmi = (weight) / (height * height);
+    bmi = parseFloat(bmi).toFixed(2);
     return bmi;
 }
 
-TestBMI()
+
+function testbmi()
 {
     //8 tests.
-    failedTests = 0;
-    tests[8][3] = 
+    failedtests = 0;
+    const tests = 
+    [
+        [6, 0, 216],
+        [6, 0, 215],
+        [6, 5, 215],
+        [6, 0, 180],
+        [6, 0, 179],
+        [6, 8, 180],
+        [5, 3, 102],
+        [5, 4, 105],
+    ];
+    const expvals = ["obese","overweight","overweight","overweight","normal weight","normal weight","normal weight","underweight"];
+    for (let i = 0; i < 8; i = i + 1)
     {
-        {6, 0, 216},
-        {6, 0, 215},
-        {6, 5, 215},
-        {6, 0, 180},
-        {6, 0, 179},
-        {6, 8, 180},
-        {5, 3, 102},
-        {5, 4, 105}
-    };
-    std::string expVals[8] = {"obese","overweight","overweight","overweight","normal weight","normal weight","normal weight","underweight"};
-    for (int i = 0; i < 8; i = i + 1)
-    {
-        if (InterpretBMI(BMICalculator(tests[i][0], tests[i][1], tests[i][2])) != expVals[i])
+        if (interpretbmi(bmicalculator(tests[i][0], tests[i][1], tests[i][2])) != expvals[i])
         {
-            std::cout << "Test " << i << " failed\n";
-            failedTests = failedTests + 1;
+            rpt = "Test " + i + " failed";
+            console.log(rpt)
+            failedtests = failedtests + 1;
         }
     }
-    return failedTests;
+    if (failedtests == 0)
+    {
+        console.log("All tests passed");
+    }
+    return failedtests;
 }
+testbmi();
