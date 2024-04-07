@@ -8,7 +8,7 @@
     <script src="bmicalculator.js"></script>
 </head>
 <body>
-<form oninput= "result_val.value=parseInt(feet.value) + parseInt(inches.value) + parseInt(pounds.value)">
+<form oninput= "result_val.value=bmicalculator(document.getElementById('feet').value, document.getElementById('inches').value ,document.getElementById('pounds').value); result_str.value=interpretbmi(bmicalculator(document.getElementById('feet').value, document.getElementById('inches').value ,document.getElementById('pounds').value))">
     <table id="bmi menu"> 
         <tr> 
             <td colspan="5"> 
