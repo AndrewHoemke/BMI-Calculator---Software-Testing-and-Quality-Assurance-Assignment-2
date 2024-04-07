@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="bmicalculator.js"></script>
+</head>
+<body>
+<form oninput= "result_val.value=parseInt(feet.value) + parseInt(inches.value) + parseInt(pounds.value)">
+    <table id="bmi menu"> 
+        <tr> 
+            <td colspan="5"> 
+                <label for="feet">Feet:</label>
+                <input type="number" id="feet" name="feet" min="1" value="1"> 
+            </td> 
+        </tr> 
+        <tr> 
+            <td colspan="5"> 
+                <label for="inches">Inches:</label>
+                <input type="number" id="inches" name="inches" min="0" max="11" value="0"> 
+            </td> 
+        </tr> 
+        <tr> 
+            <td colspan="5"> 
+                <label for="pounds">Pounds:</label>
+                <input type="number" id="pounds" name="pounds" min="0" value="0"> 
+            </td> 
+        </tr> 
+        <tr> 
+            <td colspan="5"> 
+                <label for="result_val">Your BMI is:</label>
+                <output type="text" id="result_val" name="result_val"> 
+            </td> 
+            </tr>
+            <tr>
+
+            <td colspan="5"> 
+                <label for="result_str">You are:</label>
+                <output type="text" id="result_str" name="result_str" value=""> 
+            </td> 
+        </tr> 
+    </table> 
+</form>
+</body>
+</html>
