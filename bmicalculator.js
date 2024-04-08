@@ -1,19 +1,3 @@
-function feetval(val)
-{ 
-    document.getElementById("feet").value = document.getElementById("feet").value + val
-} 
-
-function inchesval(val)
-{ 
-    document.getElementById("inches").value = document.getElementById("inches").value + val
-} 
-
-function poundsval(val)
-{ 
-    document.getElementById("pounds").value = document.getElementById("pounds").value + val
-} 
-
-
 
 function interpretbmi(bmi)
 {
@@ -51,35 +35,4 @@ function bmicalculator(feet, inches, pounds)
 }
 
 
-function testbmi()
-{
-    //8 tests.
-    failedtests = 0;
-    const tests = 
-    [
-        [6, 0, 216],
-        [6, 0, 215],
-        [6, 5, 215],
-        [6, 0, 180],
-        [6, 0, 179],
-        [6, 8, 180],
-        [5, 3, 102],
-        [5, 4, 105],
-    ];
-    const expvals = ["obese","overweight","overweight","overweight","normal weight","normal weight","normal weight","underweight"];
-    for (let i = 0; i < 8; i = i + 1)
-    {
-        if (interpretbmi(bmicalculator(tests[i][0], tests[i][1], tests[i][2])) != expvals[i])
-        {
-            rpt = "Test " + i + " failed";
-            console.log(rpt)
-            failedtests = failedtests + 1;
-        }
-    }
-    if (failedtests == 0)
-    {
-        console.log("All tests passed");
-    }
-    return failedtests;
-}
-testbmi();
+module.exports = [bmicalculator, interpretbmi]
